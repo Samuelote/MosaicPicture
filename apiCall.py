@@ -67,7 +67,7 @@ class pictureGenerator:
     def start(self):
         self.loadImages()
         print('now fires replace')
-        self.replace()
+        # self.replace()
 
 
     def replace(self):
@@ -75,12 +75,12 @@ class pictureGenerator:
         for iter in self.imageBank:
             coords = self.findPixelMatch(self.findAveragePixel(iter))
             if coords != 'No Match Found':
-                self.i += 2
+                self.i += 1
                 yaxis = int(coords[1])
                 xaxis = int(coords[0])
                 self.localImg[xaxis:xaxis+20, yaxis:yaxis+20] = iter
 
-        if self.i <= (self.localImg.shape[0]*self.localImg.shape[1])/200: self.replace()
+        if self.i <= 5: self.replace()
         else:
             print(self.i, (self.localImg.shape[0]*self.localImg.shape[1])/200)
             cv2.imshow('image', self.localImg)
