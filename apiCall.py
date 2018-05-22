@@ -75,7 +75,7 @@ class pictureGenerator:
         for iter in self.imageBank:
             coords = self.findPixelMatch(self.findAveragePixel(iter))
             if coords != 'No Match Found':
-                self.i += 5
+                self.i += 2
                 yaxis = int(coords[1])
                 xaxis = int(coords[0])
                 self.localImg[xaxis:xaxis+20, yaxis:yaxis+20] = iter
