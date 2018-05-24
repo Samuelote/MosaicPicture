@@ -26,8 +26,7 @@ class pictureGenerator:
         self.replace()
 
 
-    # this is the last thing I talked to you about: resizing the root photo so we have to deal with less pixels.
-    # But this is in no way the fix. It saves me about .5 seconds. lol
+    # resizes local image
     def local_image(self, localImg):
         resp = cv2.imread(localImg)
         # height = int(int(resp.shape[0])/2)
@@ -54,7 +53,7 @@ class pictureGenerator:
                    # "https://www.flickr.com/search/?text=solid%20colors&color_codes=4",
                    # "https://www.flickr.com/search/?text=solid%20colors&color_codes=1",
                    # "https://www.flickr.com/search/?text=solid%20colors&color_codes=0",
-                   "https://www.flickr.com/photos/",
+                   # "https://www.flickr.com/photos/",
                    # "https://www.flickr.com/search/?text=solid%20colors&color_codes=2",
                    # "https://www.flickr.com/search/?text=solid%20colors&color_codes=b",
                    # "https://www.flickr.com/groups/44124468667@N01/pool/"
@@ -65,15 +64,16 @@ class pictureGenerator:
         for item in urlList:
             photo = urlopen(item)
             html = photo.read().decode('utf-8')
+            print(html)
             pattern = re.compile("(\/\/c1.staticflickr.com\/.+\.jpg)", re.UNICODE)
-            for m in pattern.findall(html):
-                self.i += 20
-                url = 'http:' + m
-                resp = urlopen(url)
-                img = np.asarray(bytearray(resp.read()), dtype="uint8")
-                img = cv2.imdecode(img, cv2.IMREAD_COLOR)
-                resizedImg = cv2.resize(img, (20, 20))
-                self.imageBank.append(resizedImg)
+            # for m in pattern.findall(html):
+            #     self.i += 20
+            #     url = 'http:' + m
+            #     resp = urlopen(url)
+            #     img = np.asarray(bytearray(resp.read()), dtype="uint8")
+            #     img = cv2.imdecode(img, cv2.IMREAD_COLOR)
+            #     resizedImg = cv2.resize(img, (20, 20))
+            #     self.imageBank.append(resizedImg)
 
 
     # This replaces the existing pixels of the root image with 20x20px flickr images
@@ -86,11 +86,9 @@ class pictureGenerator:
                 xaxis = int(coords[0])
                 self.localImg[xaxis:xaxis+20, yaxis:yaxis+20] = iter
 
-        if self.i <= 5: self.replace()
-        else:
-            print("Everything else took", time.time() - start_time, "seconds to run")
-            cv2.imshow('image', self.localImg)
-            cv2.waitKey(0)
+        print("Everything else took", time.time() - start_time, "seconds to run")
+        cv2.imshow('image', self.localImg)
+        cv2.waitKey(0)
 
 
 

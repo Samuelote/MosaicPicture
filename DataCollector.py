@@ -40,13 +40,12 @@ def storeImage(img, directory):
 
 def get_urls(search_text, quantity):
     ############################################################ Enter your own key in here. ###################################################################
-    api_key = '' # This should open a local file, so we don't have to keep removing our private key before pushing.
 
-    url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='
-    + api_key + '&text=' + search_text
-    + '&sort=date-posted-desc&per_page=500&format=json&nojsoncallback=1'
+    api_key = str(open("./apiKey").read()) # This should open a local file, so we don't have to keep removing our private key before pushing.
+    url = 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=' + api_key + '&text=' + search_text + '&sort=date-posted-desc&per_page=500&format=json&nojsoncallback=1'
 
-    json_obj = json.load(urlopen(url))
+    obj = urlopen(url).read().decode('utf-8')
+    json_obj = json.loads(obj)
     image_url_list = []
 
     for item in json_obj['photos']['photo']:
