@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b72586c-d200-4fa7-8f72-fba26f2ad467" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/DataCollector.py" beforeDir="false" afterPath="$PROJECT_DIR$/DataCollector.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiCall.py" beforeDir="false" afterPath="$PROJECT_DIR$/apiCall.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,11 +13,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="apiCall.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="apiCall.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/apiCall.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="47" />
+            <state relative-caret-position="96">
+              <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+              <folding>
+                <element signature="e#0#34#0" expanded="true" />
+                <element signature="e#749#946#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DataCollector.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataCollector.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="310">
+              <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -27,16 +38,9 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataCollector.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataCollector.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#34#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="apiKey" pinned="false" current-in-tab="false">
@@ -56,7 +60,6 @@
       <find>c1.staticflickr.com/</find>
       <find>url</find>
       <find>20</find>
-      <find>5</find>
       <find>1</find>
       <find>110</find>
       <find>832/2731865225</find>
@@ -67,6 +70,8 @@
       <find>localImage</find>
       <find>scroll</find>
       <find>read</find>
+      <find>5</find>
+      <find>rgb</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -78,10 +83,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/apiCall.py" />
         <option value="$PROJECT_DIR$/scrape.py" />
         <option value="$PROJECT_DIR$/apiKey" />
         <option value="$PROJECT_DIR$/DataCollector.py" />
+        <option value="$PROJECT_DIR$/apiCall.py" />
       </list>
     </option>
   </component>
@@ -103,6 +108,17 @@
             <path>
               <item name="pictureGenerator" type="b2602c69:ProjectViewProjectNode" />
               <item name="pictureGenerator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pictureGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pictureGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="image_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pictureGenerator" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pictureGenerator" type="462c0819:PsiDirectoryNode" />
+              <item name="image_data" type="462c0819:PsiDirectoryNode" />
+              <item name="20x20" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -126,7 +142,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.DataCollector">
+  <component name="RunManager" selected="Python.apiCall">
     <configuration name="DataCollector" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="pictureGenerator" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -202,10 +218,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.apiCall" />
         <item itemvalue="Python.DataCollector" />
         <item itemvalue="Python.scrape" />
         <item itemvalue="Python tests.Unittests in scrape.py" />
-        <item itemvalue="Python.apiCall" />
       </list>
     </recent_temporary>
   </component>
@@ -234,7 +250,7 @@
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.08645833" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14270833" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
@@ -285,6 +301,7 @@
           <caret line="35" column="28" selection-start-line="35" selection-start-column="28" selection-end-line="35" selection-end-column="28" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>
@@ -295,6 +312,7 @@
           <caret line="91" lean-forward="true" selection-start-line="91" selection-end-line="91" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>
@@ -305,6 +323,7 @@
           <caret line="44" column="43" selection-start-line="44" selection-start-column="43" selection-end-line="44" selection-end-column="43" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>
@@ -315,6 +334,7 @@
           <caret line="49" column="50" selection-start-line="49" selection-start-column="50" selection-end-line="49" selection-end-column="50" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>
@@ -325,6 +345,7 @@
           <caret line="3" column="21" lean-forward="true" selection-start-line="3" selection-start-column="21" selection-end-line="3" selection-end-column="21" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>
@@ -352,22 +373,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apiCall.py">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataCollector.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="65" column="19" selection-start-line="65" selection-start-column="19" selection-end-line="65" selection-end-column="47" />
+        <state relative-caret-position="310">
+          <caret line="47" column="30" selection-start-line="47" selection-start-column="30" selection-end-line="47" selection-end-column="30" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataCollector.py">
+    <entry file="file://$PROJECT_DIR$/apiCall.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="47" column="17" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
+        <state relative-caret-position="96">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+            <element signature="e#749#946#0" />
           </folding>
         </state>
       </provider>

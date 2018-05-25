@@ -5,6 +5,7 @@ import time
 import numpy as np
 import re
 import time
+import os
 start_time = time.time()
 
 # I'm stupid and just realized that things aren't supposed to be camel cased in Python. My JS mind fkd me up. So that'll change soon.
@@ -22,13 +23,14 @@ class pictureGenerator:
     def start(self):
         self.local_image(self.chosenImg)
         self.loadImages()
-        print("loadImages took", time.time() - start_time, "seconds to run")
         self.replace()
+        cv2.imshow('image', self.localImg)
+        cv2.waitKey(0)
 
 
     # resizes local image
-    def local_image(self, localImg):
-        resp = cv2.imread(localImg)
+    def local_image(self, chosen_img):
+        resp = cv2.imread(chosen_img)
         # height = int(int(resp.shape[0])/2)
         # width = int(int(resp.shape[1])/2)
         # resizedImg = cv2.resize(resp, (width, height))
@@ -36,79 +38,52 @@ class pictureGenerator:
 
 
     def loadImages(self):
-
-        # My List of URL's for web-scraping
-
-        # Comment all out except one if you wanna see it run in any sort of timely manner
-
-        urlList = ["https://www.flickr.com/search/?text=solid%20colors&color_codes=e",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=d",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=a",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=9",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=8",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=7",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=6",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=5",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=3",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=4",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=1",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=0",
-                   # "https://www.flickr.com/photos/",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=2",
-                   # "https://www.flickr.com/search/?text=solid%20colors&color_codes=b",
-                   # "https://www.flickr.com/groups/44124468667@N01/pool/"
-                   ]
-
-        # regex for finding each jpg. Pushes those found jpgs to self.imageBank
-
-        for item in urlList:
-            photo = urlopen(item)
-            html = photo.read().decode('utf-8')
-            print(html)
-            pattern = re.compile("(\/\/c1.staticflickr.com\/.+\.jpg)", re.UNICODE)
-            # for m in pattern.findall(html):
-            #     self.i += 20
-            #     url = 'http:' + m
-            #     resp = urlopen(url)
-            #     img = np.asarray(bytearray(resp.read()), dtype="uint8")
-            #     img = cv2.imdecode(img, cv2.IMREAD_COLOR)
-            #     resizedImg = cv2.resize(img, (20, 20))
-            #     self.imageBank.append(resizedImg)
+        path, dirs, images = next(os.walk('./image_data/20x20'))
+        for pic in images:
+            self.imageBank.append(pic)
 
 
     # This replaces the existing pixels of the root image with 20x20px flickr images
     def replace(self):
-        for iter in self.imageBank:
-            coords = self.findPixelMatch(self.findAveragePixel(iter))
+        requiredIterations = ((self.localImg.shape[0]*1920))/200
+        print("replace start", time.time() - start_time, "seconds to run")
+        for j in range(0,len(self.imageBank)-1):
+            iter = self.imageBank[j]
+            readPic = cv2.imread('./image_data/20x20/'+iter)
+            raw = str(iter[:-4]);
+            rgb = raw[0]+raw[1]+raw[2]+','+raw[3]+raw[4]+raw[5]+','+raw[6]+raw[7]+raw[8]
+            coords = self.findPixelMatch(rgb)
             if coords != 'No Match Found':
-                self.i += 1
+                self.i += 1;
                 yaxis = int(coords[1])
                 xaxis = int(coords[0])
-                self.localImg[xaxis:xaxis+20, yaxis:yaxis+20] = iter
+                self.localImg[xaxis:xaxis+20, yaxis:yaxis+20] = readPic
+        print("replace done", time.time() - start_time, "seconds to run")
 
-        print("Everything else took", time.time() - start_time, "seconds to run")
-        cv2.imshow('image', self.localImg)
-        cv2.waitKey(0)
-
-
-
-    ## Calculates the average RGB value of img argument
-    def findAveragePixel(self, img):
-        if(len(img) > 0):
-            avg = [int(img[:, :, i].mean()) for i in range(img.shape[-1])]
-            return(avg)
+        #     # else:
+        #     #     if (j < len(self.imageBank)-100):
+        #     #         self.imageBank.pop(j)
+        #     #         j -= 1
+        #
+        # print(self.i, requiredIterations, '   banksize: ', len(self.imageBank))
+        # if (self.i < requiredIterations):
+        #     self.replace()
+        # else:
 
 
     # Pretty self-explanatory. Once the flickr image is analyzed for average RGB, it is put into here to find
     # the closest match (if any) of our localImage
     def findPixelMatch(self, rgb):
         img = self.localImg
+        b2 = int(rgb[0]+rgb[1]+rgb[2])
+        g2 = int(rgb[4]+rgb[5]+rgb[6])
+        r2 = int(rgb[8]+rgb[9]+rgb[10])
         for i in range(0,img.shape[0]-30, 20):
             for j in range(0, img.shape[1]-30, 20):
                 b = int(img[i, j, 0])
                 g = int(img[i, j, 1])
                 r = int(img[i, j, 2])
-                if ((r <= rgb[0]+5 and r >= rgb[0]-5) and (g <= rgb[1]+5 and g >= rgb[1]-5) and (b <= rgb[2]+5 and b >= rgb[2]-5) and self.checkForCoords(i, j) == False):
+                if ((r <= r2+3 and r >= r2-3) and (g <= g2+3 and g >= g2-3) and (b <= b2+3 and b >= b2-3) and self.checkForCoords(i, j) == False):
                     self.occupiedCoords.append([i,j])
                     return (i, j)
         return ('No Match Found')
