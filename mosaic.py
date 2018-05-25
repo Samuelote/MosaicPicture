@@ -32,11 +32,6 @@ class pictureGenerator:
         for filename in self.filenames:
             self.bgrs.append(self.filename_to_BGR(filename))
 
-        # Testing find_best_match()
-        # self.find_best_match(self.bgrs[1])
-
-        # print("BGR_to_filename", self.BGR_to_filename([233, 123, 44]))
-
         self.loop_local_img()
         print("finished", time.time() - start_time, "seconds to run")
 
