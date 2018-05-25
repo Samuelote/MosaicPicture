@@ -35,6 +35,7 @@ class pictureGenerator:
         self.loop_local_img()
         print("finished", time.time() - start_time, "seconds to run")
 
+        cv2.imwrite('greek_L2.jpg', self.localImg)
         cv2.imshow('image', self.localImg)
         cv2.waitKey(0)
 

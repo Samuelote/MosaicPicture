@@ -70,7 +70,7 @@ def download_pictures(url_list):
 def main():
     # Fill this list with generic terms to search their database with. There will likely be 500 images (maximum) for each term you put in this list.
     # An example is shown below... Beware that I stopped this about halfway through at around 50 minutes in.
-    search_terms = ['nature', 'modern', 'city', 'car', 'animal', 'person', 'engineering']
+    search_terms = ['gun', 'car', 'fun']
     for term in search_terms:
         print("Searching " + term + "...")
         image_urls = get_urls(term, 10)
