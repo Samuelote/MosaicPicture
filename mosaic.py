@@ -121,8 +121,7 @@ class pictureGenerator:
 def main():
     # link a path to a local photo here before running
     generator = pictureGenerator('greek.jpg')
-    # generator.start()
-    generator.local_image()
+    generator.start()
 
 
 
