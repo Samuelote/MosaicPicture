@@ -14,8 +14,8 @@ start_time = time.time()
 
 class pictureGenerator:
 
-    def __init__(self, chosenImg):
-        self.chosenImg = chosenImg
+    def __init__(self, chosen_img):
+        self.chosen_img = chosen_img
         self.localImg = ''
         self.i = 0
         self.filenames = ''
@@ -23,7 +23,7 @@ class pictureGenerator:
 
 
     def start(self):
-        self.local_image(self.chosenImg)
+        self.local_image()
         print("start", time.time() - start_time, "seconds to run")
 
         self.get_image_filenames()
@@ -105,16 +105,24 @@ class pictureGenerator:
 
 
     # resizes local image
-    def local_image(self, chosen_img):
-        resp = cv2.imread(chosen_img)
+    def local_image(self):
+        resp = cv2.imread(self.chosen_img)
+        height = resp.shape[0]
+        width = resp.shape[1]
+        while(height % 20 != 0):
+            height = height - 1
+        while(width % 20 != 0):
+            width = width - 1
+        resp = cv2.resize(resp, (width, height))
+
         self.localImg = resp
 
 
 def main():
     # link a path to a local photo here before running
     generator = pictureGenerator('greek.jpg')
-    generator.start()
-
+    # generator.start()
+    generator.local_image()
 
 
 
