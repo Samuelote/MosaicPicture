@@ -11,6 +11,7 @@ from bisect import bisect_left
 
 start_time = time.time()
 
+# Size of replaced image square segment (SEGMENT_SIZE x SEGMENT_SIZE)
 SEGMENT_SIZE = 5
 
 class pictureGenerator:
